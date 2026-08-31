@@ -23,4 +23,12 @@ class EnvLoader {
         }
         return true;
     }
+
+    public static function get(string $key, $default = null) {
+        $value = getenv($key);
+        if ($value !== false) {
+            return $value;
+        }
+        return $_ENV[$key] ?? $_SERVER[$key] ?? $default;
+    }
 }

@@ -8,17 +8,21 @@ require_once __DIR__ . '/services/EnvLoader.php';
 require_once __DIR__ . '/services/ImageProcessor.php';
 require_once __DIR__ . '/services/GeminiClient.php';
 
-// Load local .env file if available
+// Attempt to load local .env file
 EnvLoader::load(__DIR__ . '/.env');
 
-// Load configurations
-$config = require __DIR__ . '/config/app.php';
+// Fetch application configs if available
+$config = [];
+if (file_exists(__DIR__ . '/config/app.php')) {
+    $config = require __DIR__ . '/config/app.php';
+}
 
-// Fallback lookup using EnvLoader::get() for environment key resolution
-$apiKey = !empty($config['api_key']) ? $config['api_key'] : EnvLoader::get('API_KEY');
-$apiEndpoint = !empty($config['api_endpoint']) 
-    ? $config['api_endpoint'] 
-    : EnvLoader::get('API_ENDPOINT', 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent');
+// Retrieve API credentials using EnvLoader resolution
+$apiKey = EnvLoader::get('API_KEY', $config['api_key'] ?? null);
+$apiEndpoint = EnvLoader::get(
+    'API_ENDPOINT', 
+    $config['api_endpoint'] ?? 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent'
+);
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
@@ -42,7 +46,7 @@ if (!$imageResult['success']) {
 }
 
 if (empty($apiKey)) {
-    echo json_encode(['success' => false, 'message' => 'API Key is missing in environment configuration.']);
+    echo json_encode(['success' => false, 'message' => 'Error: API Key is missing in environment configuration.']);
     exit;
 }
 

@@ -1,0 +1,21 @@
+# Environment & Secrets
+.env
+.env.local
+
+# Generated Scripts & Utilities
+
+*_report_sample.png
+
+# Uploaded Medical Images (Privacy / Storage Protection)
+uploads/*
+!uploads/.gitkeep
+
+# Dependencies & Local Environment
+vendor/
+node_modules/
+__pycache__/
+*.pyc
+
+# Operating System Files
+.DS_Store
+Thumbs.db

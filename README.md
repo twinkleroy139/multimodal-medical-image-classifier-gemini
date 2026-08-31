@@ -11,8 +11,10 @@
 
 [Explore Live Application](https://multimodal-medical-image-classifier.onrender.com) · [Report Bug & Request Feature](https://github.com/your-username/multimodal-medical-image-classifier/issues)
 
-</div>
+Live Site: https://multimodal-medical-image-classifier.onrender.com
 
+</div>
+ 
 ---
 
 ## 💡 About The Project
@@ -73,59 +75,95 @@ MediScan-Net/
 ├── process.php                  # Core REST API controller routing backend validation & AI calls
 └── README.md
 
+---
 
 
+## ⚙️ Getting Started Locally
 
+Follow these steps to set up and run **MediScan-Net** on your local development machine using **XAMPP, WampServer, Apache/Nginx, or PHP's built-in development server**.
 
+### Prerequisites
 
+* **PHP** version 8.1 or higher.
+* Local server environment (`XAMPP`, `WampServer`, or Apache/Nginx).
+* A valid **Google Gemini API Key**.
 
+### Installation Steps
 
-⚙️ Getting Started Locally
-Follow these steps to set up and run MediScan-Net on your local development machine (e.g., XAMPP or PHP built-in server).
+#### 1. Clone the Repository
 
-Prerequisites:
-1. PHP version 8.1 or higher.
-2.Local server environment (XAMPP, WampServer, or Apache/Nginx)
-3.A valid Google Gemini API Key.
-
-
-Installation Steps:
-
-1. Clone the Repository
--> git clone [https://github.com/your-username/multimodal-medical-image-classifier.git](https://github.com/your-username/multimodal-medical-image-classifier.git)
+```bash
+git clone https://github.com/your-username/multimodal-medical-image-classifier.git
 cd multimodal-medical-image-classifier
+```
 
-2.Configure Environment Variables(Create a local configuration file by copying the template)
+#### 2. Configure Environment Variables
 
--> cp .env.example .env
+Create a local configuration file by copying the template:
 
-Open .env in your text editor and add your API credentials:
--> API_KEY=YOUR_ACTUAL_GEMINI_API_KEY
--> API_ENDPOINT=[https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent](https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent)
+```bash
+cp .env.example .env
+```
 
-3. Launch the Local Server
--> php -S localhost:8000
-Open your browser and navigate to http://localhost:8000
+Open `.env` in your text editor and add your API credentials:
+
+```env
+API_KEY=YOUR_ACTUAL_GEMINI_API_KEY
+API_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+```
+
+> **Security Note:** Never commit your `.env` file or expose your Gemini API key publicly. Make sure `.env` is included in your `.gitignore` file.
+
+#### 3. Launch the Local Server
+
+Using PHP's native development server:
+
+```bash
+php -S localhost:8000
+```
+
+Then open your browser and navigate to:
+
+```text
+http://localhost:8000
+```
+
+---
+
+## ☁️ Cloud Deployment (Render)
+
+MediScan-Net can be deployed on cloud platforms such as **Render**.
+
+### Deployment Steps
+
+1. Push your code to a public or private GitHub repository.
+2. Create a new **Web Service** on [Render](https://render.com/) and connect your repository.
+3. Configure the runtime environment for **PHP**.
+4. Navigate to the **Environment** section in your Render dashboard and add the following environment variables:
+
+```env
+API_KEY=YOUR_GEMINI_API_KEY
+API_ENDPOINT=https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+```
+
+5. Click **Deploy Web Service**.
+6. Once deployment is complete, open the generated Render URL to access MediScan-Net.
+
+---
+
+## ⚠️ Clinical & Medical Disclaimer
+
+> **Notice:** MediScan-Net is developed strictly as an auxiliary tool for **educational, research, and technical demonstration purposes**. It is **not a certified medical device** and must not be used as a substitute for professional medical advice, clinical diagnosis, or treatment.
+>
+> AI-generated results may contain errors or inaccuracies. Any medical information produced by this application should be independently reviewed and verified by a qualified healthcare professional before being used for clinical decision-making.
+
+---
+
+## 👤 Author & Career Portfolio
+
+Built with passion as part of a **full-stack web engineering and artificial intelligence integration showcase**.
+
+Feel free to connect, explore the source code, and discover more projects on [GitHub](https://github.com/twinkleroy139).
 
 
 
-4. ☁️ Deployment (Render / Cloud)
--> Connect your repository to Render as a Web Service.
-
--> Select PHP environment.
-
--> Under Environment Variables in Render Dashboard, set:
-
-API_KEY: Your Gemini API Key
-
-API_ENDPOINT: https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent
-
--> Deploy!
-
-
-⚠️ Clinical & Medical Disclaimer
-Notice: MediScan-Net is developed strictly as an auxiliary tool for educational, research, and technical demonstration purposes[cite: 14]. It is not a certified medical device and must not substitute for professional medical advice, clinical diagnosis, or treatment regimens administered by qualified healthcare professionals[cite: 14].
-
-
-👤 Author & Career Portfolio
-Built with passion as part of full-stack web engineering and artificial intelligence integration showcases. Feel free to connect or explore more projects on GitHub[https://github.com/twinkleroy139].
